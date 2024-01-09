@@ -11,6 +11,6 @@ public class Seat extends BaseModel{
 
     private int number;
     private String seatType;
-    private int row;
-    private int col;
+    private int rowNo;
+    private int colNo;
 }
