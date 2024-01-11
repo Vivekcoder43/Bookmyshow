@@ -1,9 +1,6 @@
 package com.bookmyshow.demo.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,8 +11,21 @@ import java.util.List;
 @Entity
 public class Booking extends BaseModel{
 
+
+    /*
+          User       Booking
+          1           M
+          1           1
+
+          Unless, you really required the List<Booking> on users, don't keep that variable in User.
+          Always keep the id of 1 side on m side -> Follow this for classes also.
+     */
+
     @Enumerated(EnumType.ORDINAL)
     private BookingStatus status;
+
+    @ManyToOne
+    private User user;
 
     // to handle cancellation of booking, then it'll be m:m
     @OneToMany
